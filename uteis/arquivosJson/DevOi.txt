@@ -1,0 +1,159 @@
+{
+	"user": "TR170395",
+	"password": "Ratr45ut",
+	"url": "t3://10.58.45.1:7001",
+	"domain": {
+		"name": "sisdevdomain"
+	},
+	"dataSources": [{
+		"jndiName": "name",
+		"targets": [{
+			"name": "target1",
+			"type": "Server"
+		}],
+		"connectionPool": {
+			"url": "jdbc: oracle: thin: @sisprd12: 1550: SISPRD",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sistem",
+			"dbPassword": "sistem",
+			"testTableName": "SQLBEGINNULL;END;",
+			"iniCapacity": 0,
+			"maxCapacity": 0,
+			"incrementCapacity": 0,
+			"testConnReserve": true,
+			"shrinkFrequency": 0,
+			"connCreationRetryFrequency": 0,
+			"inactiveConnTimeout": 0,
+			"maxWaitingConn": 0,
+			"connReserveTimeout": 0,
+			"inactiveConnectionTimeoutSeconds": 120
+		},
+		"transaction": {
+			"supportsGlobalTransactions": true,
+			"SetXATransactionTimeout": true,
+			"XATransactionTimeout": 600,
+			"LastLoggingResource": true
+		}
+	}],
+	"fileStores": [{
+		"name":"FileStore_NetworkConnectorOutDLQ",
+		"target":"sisdx02a"
+		},
+		{
+		"name":"FileStore_NetworkConnectorOutQueue",
+		"target":"sisdx02a"
+		},
+		{
+		"name":"FileStore_NetworkSupervisorDetailDLQ",
+		"target":"sisdx02a"
+		},
+		{
+		"name":"FileStore_NetworkSupervisorDetailQueue",
+		"target":"sisdx02a"
+		},
+		{
+		"name":"FileStore_ProvisioningSupervisorDetailDLQ",
+		"target":"sisdx02a"
+		},
+		{
+		"name":"FileStore_ProvisioningSupervisorDetailQueue",
+		"target":"sisdx02a"
+	}],
+	"jmsServer": [{
+		"name":"JMSServer_NetworkConnectorOutDLQ",
+		"persistentStore":"FileStore_NetworkConnectorOutDLQ",
+		"target":"sisdx02a"
+		},
+		{
+		"name":"JMSServer_NetworkConnectorOutQueue",
+		"persistentStore":"FileStore_NetworkConnectorOutQueue",
+		"target":"sisdx02a"
+		},
+		{
+		"name":"JMSServer_NetworkSupervisorDetailDLQ",
+		"persistentStore":"FileStore_NetworkSupervisorDetailDLQ",
+		"target":"sisdx02a"
+		},
+		{
+		"name":"JMSServer_NetworkSupervisorDetailQueue",
+		"persistentStore":"FileStore_NetworkSupervisorDetailQueue",
+		"target":"sisdx02a"
+		},
+		{
+		"name":"JMSServer_ProvisioningSupervisorDetailDLQ",
+		"persistentStore":"FileStore_ProvisioningSupervisorDetailDLQ",
+		"target":"sisdx02a"
+		},
+		{
+		"name":"JMSServer_ProvisioningSupervisorDetailQueue",
+		"persistentStore":"FileStore_ProvisioningSupervisorDetailQueue",
+		"target":"sisdx02a"
+	}],
+	"jmsModule": [{
+		"name": "sismodule",
+		"targets": [{
+			"name": "sisdx02a",
+			"type": "Server"
+		}],
+		"subdeployments": [{
+			"name":"Sub_NetworkConnectorOutDLQ",
+			"targets": [{
+				"name":"sisdx02a",
+				"type":"Server"
+			}],
+			"servers": [{
+			"name":"JMSServer_NetworkConnectorOutDLQ"
+			}]
+			},
+			{
+			"name":"Sub_NetworkConnectorOutQueue",
+			"targets": [{
+				"name":"sisdx02a",
+				"type":"Server"
+			}],
+			"servers": [{
+			"name":"JMSServer_NetworkConnectorOutQueue"
+			}]
+			},
+			{
+			"name":"Sub_NetworkSupervisorDetailDLQ",
+			"targets": [{
+				"name":"sisdx02a",
+				"type":"Server"
+			}],
+			"servers": [{
+			"name":"JMSServer_NetworkSupervisorDetailDLQ"
+			}]
+			},
+			{
+			"name":"Sub_NetworkSupervisorDetailQueue",
+			"targets": [{
+				"name":"sisdx02a",
+				"type":"Server"
+			}],
+			"servers": [{
+			"name":"JMSServer_NetworkSupervisorDetailQueue"
+			}]
+			},
+			{
+			"name":"Sub_ProvisioningSupervisorDetailDLQ",
+			"targets": [{
+				"name":"sisdx02a",
+				"type":"Server"
+			}],
+			"servers": [{
+			"name":"JMSServer_ProvisioningSupervisorDetailDLQ"
+			}]
+			},
+			{
+			"name":"Sub_ProvisioningSupervisorDetailQueue",
+			"targets": [{
+				"name":"sisdx02a",
+				"type":"Server"
+			}],
+			"servers": [{
+			"name":"JMSServer_ProvisioningSupervisorDetailQueue"
+			}]
+		}]
+	}]
+}

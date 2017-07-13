@@ -1,0 +1,157 @@
+{
+	"template": "C:/bea/wlserver_10.0/common/templates/domains/wls.jar",
+	"endereco": "C:/WLSTTESTE",
+	"user": "weblogic",
+	"password": "weblogic"
+	"domain": {
+		"name":"testeWlst",
+		"domainType": "cluster",
+		"machines": [{
+			"name": "japao"
+		},
+		{
+			"name": "nepal"
+		}],
+		"adminServer": {
+			"name": "AdminServer",
+			"port": 7001,
+			"sslPort": 7002,
+			
+		},
+		"managedServers": [{
+			"name": "japao",
+			"address": "192.168.0.1",
+			"port": 7003,
+			"cluster": "SisConnectorsPrd",
+			"machine": "japao"
+		}],
+		"clusters": [{
+			"name": "SisConnectorsPrd",
+			"multicastAddress": "239.192.0.4",
+			"multicastPort": 7054,
+			"address": [{
+				"name": "argelia",
+				"port": 7003
+			},
+			{
+				"name": "albania",
+				"port": 7003
+			}]
+		}]
+	},
+	"dataSources": [{
+		"jndiName": "name",
+		"targets": [{
+			"name": "target1"
+		}],
+		"connectionPool": {
+			"url": "jdbc: oracle: thin: @sisprd12: 1550: SISPRD",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sistem",
+			"dbPassword": "sistem",
+			"testTableName": "SQLBEGINNULL;END;",
+			"iniCapacity": 0,
+			"maxCapacity": 0,
+			"incrementCapacity": 0,
+			"testConnReserve": true,
+			"shrinkFrequency": 0,
+			"connCreationRetryFrequency": 0,
+			"inactiveConnTimeout": 0,
+			"maxWaitingConn": 0,
+			"connReserveTimeout": 0,
+			"inactiveConnectionTimeoutSeconds": 120
+		},
+		"transaction": {
+			"supportsGlobalTransactions": true,
+			"SetXATransactionTimeout": true,
+			"XATransactionTimeout": 600,
+			"LastLoggingResource": true
+		}
+	}],
+	"jdbcStores": [{
+		"name": "fsName",
+		"prefixName": "fs",
+		"target": "esseMesmo",
+		"dataSource":"aaaaa"
+	}],
+	"fileStores": [{
+		"name": "fsName",
+		"target": "fsTarget"
+	}],
+	"jmsServer": [{
+		"name": "jmserverName",
+		"persistentStore": "placeholder",
+		"target": "placeholder",
+		"maxMessages": 0,
+		"experationScanInterval": 0
+	}],
+	"jmsModule": [{
+		"name": "placeholder",
+		"targets": [{
+			"name": "target1"
+		}],
+		"connectionFactories": [{
+			"name": "name",
+			"jndiName": "jndiName",
+			"sendTimeout": 10000,
+			"maxMessagesPerSession": 1,
+			"reconnectPolicy": "All",
+			"serverAffinityEnabled": false,
+			"xaConnectionFactoryEnabled": true
+		}],
+		"subdeployments": [{
+			"name": "placeholder",
+			"targets": [{
+				"name": "target1"
+			}],
+			"servers": [{
+				"name": "placeholder"
+			}]
+		}],
+		"priorityDestinationKey": {
+			"name": "Name",
+			"sortKey": "JMSPriority",
+			"keyType": "Long",
+			"direction": "Descending"
+		},
+		"topics": [{
+			"name": "placeholder",
+			"subdeployment": "placeholder",
+			"messagingPerformancePreference": 0,
+			"ttlOverride": 0,
+			"deliveryModeOverride": "Non-Persistent",
+			"RedeliveryLimit": 0
+		}],
+		"distributedQueues": [{
+			"jndiName": "sis.wli.OnlineConnectorInDLQ",
+			"subdeployment": "placeholder",
+			"template": "placeholder",
+			"destinationKeys": "placeholder",
+			"deliveryFailure": {
+				"deliveryModeOverride":"Non-Persistent",
+				"redeliveryDelayOverride": 30000,				
+				"redeliveryLimit": 5,
+				"expirationPolicy": "redirect",
+				"errorDestination": "sis.wli.OnlineConnectorInDLQ"
+			}
+		}],
+		"queues": [{
+			"jndiName": "placeholder",
+			"subdeployment": "placeholder",
+			"template": "placeholder",
+			"destinationKeys": "placeholder",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 5,
+				"expirationPolicy": "redirect",
+				"errorDestination": "sis.wli.OnlineConnectorInDLQ",
+				"ttlOverride": 0,
+				"deliveryModeOverride": "Non-Persistent"
+			}
+		}],
+		"template": {
+			"name": "TEMPLATE_NAME",
+			"destinationKey": "DestinationKeyName"
+		}
+	}]
+}

@@ -1,0 +1,100 @@
+"dataSources": [{
+		"jndiName": "sis.CadastroDataSource",
+		"targets": [{ "name": "siswebprd38b"} ],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@sisprd-p1:1549:sisprd",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sis",
+			"dbPassword": "SENHA",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"inCapacity": 5,
+			"maxCapacity": 15,
+			"minCapacityInit": 1,
+			"incrementCapacity": 5,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 150,
+			"inactiveConnTimeout": 5,
+			"maxWaitingConn": 2147483647,
+			"connReserveTimeout": 10,
+			"inactiveConnectionTimeoutSeconds": 5
+		},
+		"transaction": {
+			"supportsGlobalTransactions": false
+		}
+	},
+	{
+		"jndiName": "sis.DomainDataSource",
+		"targets": [{ "name": "siswebprd38a", "type": "Server" }, {"name": "siswebprd38b", "type": "Server"	}],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@sisprd-p1:1549:sisprd",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sis",
+			"dbPassword": "SENHA",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"inCapacity": 5,
+			"minCapacityInit": 1,
+			"maxCapacity": 60,
+			"incrementCapacity": 5,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 600,
+			"inactiveConnTimeout": 120,
+			"maxWaitingConn": 600000,
+			"connReserveTimeout": 180,
+			"inactiveConnectionTimeoutSeconds": 120
+		},
+		"transaction": {
+			"supportsGlobalTransactions": false
+		}
+	},
+	{
+		"jndiName": "sis.HistoryDataSource",
+		"targets": [{ "name": "siswebprd38d","type": "Server"}],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@sisprd-p1:1549:sisprd",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sishis",
+			"dbPassword": "SENHA",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"inCapacity": 5,
+			"minCapacityInit": 5,
+			"maxCapacity": 60,
+			"incrementCapacity": 5,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 600,
+			"inactiveConnTimeout": 120,
+			"maxWaitingConn": 600000,
+			"connReserveTimeout": 180,
+			"inactiveConnectionTimeoutSeconds": 120
+		},
+		"transaction": {
+			"supportsGlobalTransactions": false
+		}
+	},
+	{
+		"jndiName": "sis.HistoryViewerDataSource",
+		"targets": [{"name": "siswebprd38c", "type": "Server"}],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@sisprd-p1:1549:sisprd",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sishis",
+			"dbPassword": "SENHA",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"inCapacity": 5,
+			"minCapacityInit": 5,
+			"maxCapacity": 15,
+			"incrementCapacity": 5,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 150,
+			"inactiveConnTimeout": 5,
+			"maxWaitingConn": 2147483647,
+			"connReserveTimeout": 10,
+			"inactiveConnectionTimeoutSeconds": 5
+		},
+		"transaction": {
+			"supportsGlobalTransactions": false
+		}
+	}]	

@@ -1,0 +1,2743 @@
+{
+	"template": "/sismovel/bea/wlserver_10.0/common/templates/domains/wls.jar",
+	"endereco": "/sismovel/domains/sis11domain",
+	"weblogicPassword": "sissq@31",
+	"domain": {
+		"name": "sis11server",
+		"domainType": "server",
+		"machines": [{
+			"name": "mali"
+		}],
+		"adminServer": {
+			"name": "AdminServer",
+			"port": 7001,
+			"sslPort": 7002,
+			"user": "weblogic",
+			"password": "weblogic"
+		},
+		"managedServers": [{
+			"name": "sis11server",
+			"address": "192.168.0.195",
+			"port": 7003,
+			"machine": "mali"
+		}]
+	},
+	"dataSources": [{
+		"jndiName": "sis.AggregationDataSource",
+		"targets": [{
+			"name": "sis11server"
+		}],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@tualu:1521:sis11",
+			"driverClassName": "oracle.jdbc.xa.client.OracleXADataSource",
+			"dbUserName": "sistem",
+			"dbPassword": "sistem",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"iniCapacity": 1,
+			"maxCapacity": 60,
+			"incrementCapacity": 4,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 600,
+			"inactiveConnTimeout": 120,
+			"maxWaitingConn": 600000,
+			"connReserveTimeout": 180,
+			"inactiveConnectionTimeoutSeconds": 120
+		}
+	},
+	{
+		"jndiName": "sis.CadastroDataSource",
+		"targets": [{
+			"name": "sis11server"
+		}],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@tualu:1521:sis11",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sis",
+			"dbPassword": "sis",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"iniCapacity": 5,
+			"maxCapacity": 15,
+			"incrementCapacity": 5,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 150,
+			"inactiveConnTimeout": 5,
+			"maxWaitingConn": 2147483647,
+			"connReserveTimeout": 10,
+			"inactiveConnectionTimeoutSeconds": 5
+		},
+		"transaction": {
+			"supportsGlobalTransactions": false
+		}
+	},
+	{
+		"jndiName": "sis.DomainDataSource",
+		"targets": [{
+			"name": "sis11server"
+		}],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@tualu:1521:sis11",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sis",
+			"dbPassword": "sis",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"iniCapacity": 5,
+			"maxCapacity": 60,
+			"incrementCapacity": 5,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 600,
+			"inactiveConnTimeout": 120,
+			"maxWaitingConn": 600000,
+			"connReserveTimeout": 180,
+			"inactiveConnectionTimeoutSeconds": 120
+		},
+		"transaction": {
+			"supportsGlobalTransactions": false
+		}
+	},
+	{
+		"jndiName": "sis.HistoryDataSource",
+		"targets": [{
+			"name": "sis11server"
+		}],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@tualu:1521:sis11",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sishis",
+			"dbPassword": "sishis",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"iniCapacity": 5,
+			"maxCapacity": 60,
+			"incrementCapacity": 5,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 600,
+			"inactiveConnTimeout": 120,
+			"maxWaitingConn": 600000,
+			"connReserveTimeout": 180,
+			"inactiveConnectionTimeoutSeconds": 120
+		},
+		"transaction": {
+			"supportsGlobalTransactions": false
+		}
+	},
+	{
+		"jndiName": "sis.HistoryViewerDataSource",
+		"targets": [{
+			"name": "sis11server"
+		}],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@tualu:1521:sis11",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sishis",
+			"dbPassword": "sishis",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"iniCapacity": 5,
+			"maxCapacity": 15,
+			"incrementCapacity": 5,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 150,
+			"inactiveConnTimeout": 5,
+			"maxWaitingConn": 2147483647,
+			"connReserveTimeout": 10,
+			"inactiveConnectionTimeoutSeconds": 5
+		},
+		"transaction": {
+			"supportsGlobalTransactions": false
+		}
+	},
+	{
+		"jndiName": "sis.JMSDataSource",
+		"targets": [{
+			"name": "sis11server"
+		}],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@tualu:1521:sis11",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sisjms",
+			"dbPassword": "sisjms",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"iniCapacity": 5,
+			"maxCapacity": 60,
+			"incrementCapacity": 5,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 600,
+			"inactiveConnTimeout": 120,
+			"maxWaitingConn": 600000,
+			"connReserveTimeout": 180,
+			"inactiveConnectionTimeoutSeconds": 120
+		},
+		"transaction": {
+			"supportsGlobalTransactions": true
+		}
+	},
+	{
+		"jndiName": "sis.TempDataSource",
+		"targets": [{
+			"name": "sis11server"
+		}],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@tualu:1521:sis11",
+			"driverClassName": "oracle.jdbc.xa.client.OracleXADataSource",
+			"dbUserName": "sistem",
+			"dbPassword": "sistem",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"iniCapacity": 1,
+			"maxCapacity": 60,
+			"incrementCapacity": 4,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 600,
+			"inactiveConnTimeout": 120,
+			"maxWaitingConn": 600000,
+			"connReserveTimeout": 180,
+			"inactiveConnectionTimeoutSeconds": 120
+		},
+		"transaction": {
+			"supportsGlobalTransactions": true,
+			"XATransactionTimeout": 600
+		}
+	},
+	{
+		"jndiName": "sis.TempLLRDataSource",
+		"targets": [{
+			"name": "sis11server"
+		}],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@tualu:1521:sis11",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sistem",
+			"dbPassword": "sistem",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"iniCapacity": 1,
+			"maxCapacity": 15,
+			"incrementCapacity": 1,
+			"testConnReserve": false,
+			"shrinkFrequency": 900,
+			"connCreationRetryFrequency": 0,
+			"inactiveConnTimeout": 0,
+			"maxWaitingConn": 2147483647,
+			"connReserveTimeout": 10,
+			"inactiveConnectionTimeoutSeconds": 0
+		},
+		"transaction": {
+			"supportsGlobalTransactions": true,
+			"LastLoggingResource": true
+		}
+	}],
+	"fileStores": [{
+		"name": "Filestore_ConnectorIn_sis11server",
+		"target": "sis11server"
+	},
+	{
+		"name": "Filestore_ConnectorOut_sis11server",
+		"target": "sis11server"
+	},
+	{
+		"name": "Filestore_HistoryIn_sis11server",
+		"target": "sis11server"
+	},
+	{
+		"name": "Filestore_Monitor_sis11server",
+		"target": "sis11server"
+	},
+	{
+		"name": "Filestore_NetworkConnBatchOut_sis11server",
+		"target": "sis11server"
+	},
+	{
+		"name": "Filestore_NetworkConnOnlineOut_sis11server",
+		"target": "sis11server"
+	},
+	{
+		"name": "Filestore_NetworkIn01_sis11server",
+		"target": "sis11server"
+	},
+	{
+		"name": "Filestore_NetworkIn02_sis11server",
+		"target": "sis11server"
+	},
+	{
+		"name": "Filestore_NetworkIn03_sis11server",
+		"target": "sis11server"
+	},
+	{
+		"name": "Filestore_NetworkIn04_sis11server",
+		"target": "sis11server"
+	},
+	{
+		"name": "Filestore_NetworkIn05_sis11server",
+		"target": "sis11server"
+	},
+	{
+		"name": "Filestore_NetworkOut_sis11server",
+		"target": "sis11server"
+	},
+	{
+		"name": "Filestore_ProvisionerIn_sis11server",
+		"target": "sis11server"
+	},
+	{
+		"name": "Filestore_ProvisionerOut_sis11server",
+		"target": "sis11server"
+	},
+	{
+		"name": "Filestore_ProvisionerReplyAgg_sis11server",
+		"target": "sis11server"
+	},
+	{
+		"name": "Filestore_Supervisor_sis11server",
+		"target": "sis11server"
+	}],
+	"jmsServer": [{
+		"name": "ConnectorIn_sis11server",
+		"persistentStore": "Filestore_ConnectorIn_sis11server",
+		"target": "sis11server",
+		"maxMessages": 0,
+		"experationScanInterval": 0
+	},
+	{
+		"name": "ConnectorOut_sis11server",
+		"persistentStore": "Filestore_ConnectorOut_sis11server",
+		"target": "sis11server",
+		"maxMessages": 0,
+		"experationScanInterval": 0
+	},
+	{
+		"name": "HistoryIn_sis11server",
+		"persistentStore": "Filestore_HistoryIn_sis11server",
+		"target": "sis11server",
+		"maxMessages": 0,
+		"experationScanInterval": 0
+	},
+	{
+		"name": "MonConnectorsJMSServer_sis11server",
+		"persistentStore": "Filestore_Monitor_sis11server",
+		"target": "sis11server",
+		"maxMessages": 0,
+		"experationScanInterval": 0
+	},
+	{
+		"name": "NetworkConnBatchOut_sis11server",
+		"persistentStore": "Filestore_NetworkConnBatchOut_sis11server",
+		"target": "sis11server",
+		"maxMessages": 0,
+		"experationScanInterval": 0
+	},
+	{
+		"name": "NetworkConnOnlineOut_sis11server",
+		"persistentStore": "Filestore_NetworkConnOnlineOut_sis11server",
+		"target": "sis11server",
+		"maxMessages": 0,
+		"experationScanInterval": 0
+	},
+	{
+		"name": "NetworkIn01_sis11server",
+		"persistentStore": "Filestore_NetworkIn01_sis11server",
+		"target": "sis11server",
+		"maxMessages": 0,
+		"experationScanInterval": 0
+	},
+	{
+		"name": "NetworkIn02_sis11server",
+		"persistentStore": "Filestore_NetworkIn02_sis11server",
+		"target": "sis11server",
+		"maxMessages": 0,
+		"experationScanInterval": 0
+	},
+	{
+		"name": "NetworkIn03_sis11server",
+		"persistentStore": "Filestore_NetworkIn03_sis11server",
+		"target": "sis11server",
+		"maxMessages": 0,
+		"experationScanInterval": 0
+	},
+	{
+		"name": "NetworkIn04_sis11server",
+		"persistentStore": "Filestore_NetworkIn04_sis11server",
+		"target": "sis11server",
+		"maxMessages": 0,
+		"experationScanInterval": 0
+	},
+	{
+		"name": "NetworkIn05_sis11server",
+		"persistentStore": "Filestore_NetworkIn05_sis11server",
+		"target": "sis11server",
+		"maxMessages": 0,
+		"experationScanInterval": 0
+	},
+	{
+		"name": "NetworkOut_sis11server",
+		"persistentStore": "Filestore_NetworkOut_sis11server",
+		"target": "sis11server",
+		"maxMessages": 0,
+		"experationScanInterval": 0
+	},
+	{
+		"name": "ProvisionerIn_sis11server",
+		"persistentStore": "Filestore_ProvisionerIn_sis11server",
+		"target": "sis11server",
+		"maxMessages": 0,
+		"experationScanInterval": 0
+	},
+	{
+		"name": "ProvisionerOut_sis11server",
+		"persistentStore": "Filestore_ProvisionerOut_sis11server",
+		"target": "sis11server",
+		"maxMessages": 0,
+		"experationScanInterval": 0
+	},
+	{
+		"name": "ProvisionerReplyAgg_sis11server",
+		"persistentStore": "Filestore_ProvisionerReplyAgg_sis11server",
+		"target": "sis11server",
+		"maxMessages": 0,
+		"experationScanInterval": 0
+	},
+	{
+		"name": "Supervisor_sis11server",
+		"persistentStore": "Filestore_Supervisor_sis11server",
+		"target": "sis11server",
+		"maxMessages": 0,
+		"experationScanInterval": 0
+	}],
+	"jmsModule": [
+	{
+		"name": "sismodule",
+		"targets": [{
+			"name": "sis11server"
+		}],
+		"connectionFactories": [{
+			"name": "sis.HistoryJMSConnectionFactory",
+			"jndiName": "sis.HistoryJMSConnectionFactory",
+			"sendTimeout": 10,
+			"maxMessagesPerSession": 1,
+			"reconnectPolicy": "producer",
+			"serverAffinityEnabled": true,
+			"xaConnectionFactoryEnabled": false
+		},
+		{
+			"name": "sis.JMSConnectionFactoryNonXA",
+			"jndiName": "sis.JMSConnectionFactoryNonXA",
+			"sendTimeout": 10000,
+			"maxMessagesPerSession": 1,
+			"reconnectPolicy": "all",
+			"serverAffinityEnabled": true,
+			"xaConnectionFactoryEnabled": false
+		},
+		{
+			"name": "sis.JMSConnectionFactory",
+			"jndiName": "sis.JMSConnectionFactory",
+			"sendTimeout": 10000,
+			"maxMessagesPerSession": 1,
+			"reconnectPolicy": "all",
+			"serverAffinityEnabled": true,
+			"xaConnectionFactoryEnabled": true
+		},
+		{
+			"name": "sis.NetworkJMSConnectionFactory",
+			"jndiName": "sis.NetworkJMSConnectionFactory",
+			"sendTimeout": 10,
+			"maxMessagesPerSession": 1,
+			"reconnectPolicy": "producer",
+			"serverAffinityEnabled": true,
+			"xaConnectionFactoryEnabled": false
+		}],
+		"subdeployments": [{
+			"name": "ConnectorSub",
+			"targets": [{
+				"name": "ConnectorIn_sis11server"
+			}],
+			"servers": [{
+				"name": "sis11server"
+			}]
+		},
+		{
+			"name": "HistorySub",
+			"targets": [{
+				"name": "HistoryIn_sis11server"
+			}],
+			"servers": [{
+				"name": "sis11server"
+			}]
+		},
+		{
+			"name": "MonConnectorsSub",
+			"targets": [{
+				"name": "MonConnectorsJMSServer_sis11server"
+			}],
+			"servers": [{
+				"name": "sis11server"
+			}]
+		},
+		{
+			"name": "NetworkBatchReplySub",
+			"targets": [{
+				"name": "NetworkConnBatchOut_sis11server"
+			}],
+			"servers": [{
+				"name": "sis11server"
+			}]
+		},
+		{
+			"name": "NetworkConnectorSub",
+			"targets": [{
+				"name": "NetworkConnOnlineOut_sis11server"
+			}],
+			"servers": [{
+				"name": "sis11server"
+			}]
+		},
+		{
+			"name": "NetworkReplySub",
+			"targets": [{
+				"name": "NetworkOut_sis11server"
+			}],
+			"servers": [{
+				"name": "sis11server"
+			}]
+		},
+		{
+			"name": "ProvisioningOutSub",
+			"targets": [{
+				"name": "ProvisionerOut_sis11server"
+			}],
+			"servers": [{
+				"name": "sis11server"
+			}]
+		},
+		{
+			"name": "ProvisioningSub",
+			"targets": [{
+				"name": "ProvisionerIn_sis11server"
+			}],
+			"servers": [{
+				"name": "sis11server"
+			}]
+		},
+		{
+			"name": "ReplyAggregationSub",
+			"targets": [{
+				"name": "ProvisionerReplyAgg_sis11server"
+			}],
+			"servers": [{
+				"name": "sis11server"
+			}]
+		},
+		{
+			"name": "RetornoSub",
+			"targets": [{
+				"name": "ConnectorOut_sis11server"
+			}],
+			"servers": [{
+				"name": "sis11server"
+			}]
+		},
+		{
+			"name": "SupervisorSub",
+			"targets": [{
+				"name": "Supervisor_sis11server"
+			}],
+			"servers": [{
+				"name": "sis11server"
+			}]
+		}],
+		"priorityDestinationKey": {
+			"name": "PriorityDestinationKey",
+			"sortKey": "JMSPriority",
+			"keyType": "Long",
+			"direction": "Descending"
+		},
+		"topics": [{
+			"name": "sis.SupervisorTopic",
+			"subdeployment": "SupervisorSub",
+			"messagingPerformancePreference": 0,
+			"ttlOverride": -1,
+			"deliveryModeOverride": "No-Delivery",
+			"RedeliveryLimit": -1
+		},
+		{
+			"name": "sis.MonConnectorsTopic",
+			"subdeployment": "MonConnectorsSub",
+			"messagingPerformancePreference": 0,
+			"ttlOverride": -1,
+			"deliveryModeOverride": "No-Delivery",
+			"RedeliveryLimit": -1
+		}],
+		"distributedQueues": [{
+			"jndiName": "sis.expediter.OnlineConnectorInQueue",
+			"subdeployment": "ConnectorSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.expediter.OnlineConnectorInDLQ",
+			"subdeployment": "ConnectorSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.mesox.OnlineConnectorInQueue",
+			"subdeployment": "ConnectorSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.mesox.OnlineConnectorInDLQ",
+			"subdeployment": "ConnectorSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.expediter.OnlineConnectorOutQueue",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.expediter.OnlineConnectorOutDLQ",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.mesox.OnlineConnectorOutQueue",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.mesox.OnlineConnectorOutDLQ",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.mesox.OnlineConnectorOutQueue_mesoxba",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.mesox.OnlineConnectorOutMesoxbaDLQ",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.mesox.OnlineConnectorOutQueue_mesoxce",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.mesox.OnlineConnectorOutMesxoceDLQ",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.mesox.OnlineConnectorOutQueue_mesoxmg",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.mesox.OnlineConnectorOutMesoxmgDLQ",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.mesox.OnlineConnectorOutQueue_mesoxpe",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.mesox.OnlineConnectorOutMesoxpeDLQ",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.mesox.OnlineConnectorOutQueue_mesoxrj",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.mesox.OnlineConnectorOutMesoxrjDLQ",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.ProvisionerInQueue",
+			"subdeployment": "ProvisioningSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.ProvisionerInDLQ",
+			"subdeployment": "ProvisioningSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.ProvisionerOutQueue",
+			"subdeployment": "ProvisioningOutSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.ProvisionerOutDLQ",
+			"subdeployment": "ProvisioningOutSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.ProvisionerReplyAggregationQueue",
+			"subdeployment": "ReplyAggregationSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.ProvisionerReplyAggregationDLQ",
+			"subdeployment": "ReplyAggregationSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.NetworkConnectorOutQueue",
+			"subdeployment": "NetworkConnectorSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.NetworkConnectorOutDLQ",
+			"subdeployment": "NetworkConnectorSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.NetworkPendantBatchReplyItemQueue",
+			"subdeployment": "NetworkBatchReplySub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.NetworkPendantBatchReplyItemDLQ",
+			"subdeployment": "NetworkBatchReplySub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.NetworkReceivedBatchReplyItemQueue",
+			"subdeployment": "NetworkBatchReplySub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.NetworkReceivedBatchReplyItemDLQ",
+			"subdeployment": "NetworkBatchReplySub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.NetworkReplyQueue",
+			"subdeployment": "NetworkReplySub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.NetworkReplyDLQ",
+			"subdeployment": "NetworkReplySub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.EventHistoryQueue",
+			"subdeployment": "HistorySub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.expediter_velox.OnlineConnectorInQueue",
+			"subdeployment": "ConnectorSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.expediter_velox.OnlineConnectorOutQueue",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.ProvisionerAssyncTaskDLQ",
+			"subdeployment": "ProvisioningSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.ProvisionerAssyncTaskQueue",
+			"subdeployment": "ProvisioningSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.ProvisionerInAlternativeDLQ",
+			"subdeployment": "ProvisioningSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.ProvisionerInAlternativeQueue",
+			"subdeployment": "ProvisioningSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.ProvisionerReplyAggregationAlternativeDLQ",
+			"subdeployment": "ReplyAggregationSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.ProvisionerReplyAggregationAlternativeQueue",
+			"subdeployment": "ReplyAggregationSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.wli.OnlineConnectorInQueue",
+			"subdeployment": "ConnectorSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.wli.OnlineConnectorOutQueue",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.loader.OnlineConnectorInDLQ",
+			"subdeployment": "ConnectorSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.loader.OnlineConnectorInQueue",
+			"subdeployment": "ConnectorSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.loader.OnlineConnectorOutDLQ",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.loader.OnlineConnectorOutQueue",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.som.OnlineConnectorInDLQ",
+			"subdeployment": "ConnectorSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.som.OnlineConnectorInQueue",
+			"subdeployment": "ConnectorSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.som.OnlineConnectorOutQueue",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.som.OnlineConnectorOutDLQ",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.wms.OnlineConnectorInDLQ",
+			"subdeployment": "ConnectorSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.wms.OnlineConnectorInQueue",
+			"subdeployment": "ConnectorSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.wms.OnlineConnectorOutDLQ",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.wms.OnlineConnectorOutQueue",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.xdsl.OnlineConnectorInQueueDLQ",
+			"subdeployment": "ConnectorSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.xdsl.OnlineConnectorInQueue",
+			"subdeployment": "ConnectorSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.xdsl.OnlineConnectorOutQueueDLQ",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		},
+		{
+			"jndiName": "sis.xdsl.OnlineConnectorOutQueue",
+			"subdeployment": "RetornoSub",
+			"deliveryFailure": {
+				"deliveryModeOverride": "No-Delivery",
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard"
+			}
+		}]
+	},
+	{
+		"name": "sisnetworkmodule",
+		"targets": [{
+			"name": "sis11server"
+		}],
+		"subdeployments": [{
+			"name": "NetworkInSub01",
+			"targets": [{
+				"name": "NetworkIn01_sis11server"
+			}],
+			"servers": [{
+				"name": "sis11server"
+			}]
+		},
+		{
+			"name": "NetworkInSub02",
+			"targets": [{
+				"name": "NetworkIn02_sis11server"
+			}],
+			"servers": [{
+				"name": "sis11server"
+			}]
+		},
+		{
+			"name": "NetworkInSub03",
+			"targets": [{
+				"name": "NetworkIn03_sis11server"
+			}],
+			"servers": [{
+				"name": "sis11server"
+			}]
+		},
+		{
+			"name": "NetworkInSub04",
+			"targets": [{
+				"name": "NetworkIn04_sis11server"
+			}],
+			"servers": [{
+				"name": "sis11server"
+			}]
+		},
+		{
+			"name": "NetworkInSub05",
+			"targets": [{
+				"name": "NetworkIn05_sis11server"
+			}],
+			"servers": [{
+				"name": "sis11server"
+			}]
+		}],
+		"priorityDestinationKey": {
+			"name": "NetworkPriorityDestinationKey",
+			"sortKey": "JMSPriority",
+			"keyType": "Long",
+			"direction": "Descending"
+		},
+		"queues": [{
+			"jndiName": "CONDOR01",
+			"subdeployment": "NetworkInSub01",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "VMS01",
+			"subdeployment": "NetworkInSub01",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "VMS02",
+			"subdeployment": "NetworkInSub01",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "VMS03",
+			"subdeployment": "NetworkInSub01",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "sis.NetworkIn01DLQ",
+			"subdeployment": "NetworkInSub01",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR11",
+			"subdeployment": "NetworkInSub01",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR12",
+			"subdeployment": "NetworkInSub01",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR13",
+			"subdeployment": "NetworkInSub01",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "OTA01",
+			"subdeployment": "NetworkInSub01",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "IESF01",
+			"subdeployment": "NetworkInSub01",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "IESF02",
+			"subdeployment": "NetworkInSub01",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "IESF03",
+			"subdeployment": "NetworkInSub01",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "VMP09",
+			"subdeployment": "NetworkInSub01",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "VMP01",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "VMP02",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "sis.NetworkIn02DLQ",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR30",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR31",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR32",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR70",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR71",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR72",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR73",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR74",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR75",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR76",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR77",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR78",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR79",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "PMS04",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "PMS05",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "PMS06",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "PMS07",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "SMSC03",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "SMSC04",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "RIM01",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "APC01",
+			"subdeployment": "NetworkInSub02",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "VMP03",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "VMP04",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "sis.NetworkIn03DLQ",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR20",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR22",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR23",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR33",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR50",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR51",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR52",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR53",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "NPS01",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "OSC01",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "PPM01",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "SMSC05",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "SMSC06",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "PTS01",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "PTS02",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR43",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR44",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR14",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR45",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "SAM01",
+			"subdeployment": "NetworkInSub03",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF01",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF02",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF03",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF04",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF05",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF06",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF07",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF08",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF09",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF10",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF11",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF12",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF13",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF14",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF15",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF16",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF17",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF18",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF19",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AGCF20",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "OMCP01",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "CCM01",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "NA01",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "ENUM01",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "CNAME01",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "sis.NetworkIn04DLQ",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR01",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR02",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR03",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR40",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR41",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR42",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR64",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR65",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR80",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR81",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR90",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "LSMS01",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "PMS01",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "PMS02",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "PMS03",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "PMSFIXA",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "PMS08",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "PMS09",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HLR46",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HDM01",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "HDM02",
+			"subdeployment": "NetworkInSub04",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "FEEDER01",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "AWS01",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "DSL_HUAWEI01",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "sis.NetworkIn05DLQ",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "SMSC07",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "SMSC08",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "EPAP01",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "EPAP02",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "EPAP03",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "EPAP04",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "EPAP05",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "EPAP06",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "VMP05",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "VMP06",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "VMP07",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "VMP08",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "MASC01",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "VQIP01",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "VQIPCN01",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		},
+		{
+			"jndiName": "ZTE_N31_01",
+			"subdeployment": "NetworkInSub05",
+			"destinationKeys": "NetworkPriorityDestinationKey",
+			"deliveryFailure": {
+				"redeliveryDelayOverride": -1,
+				"redeliveryLimit": -1,
+				"expirationPolicy": "discard",
+				"ttlOverride": -1,
+				"deliveryModeOverride": "No-Delivery"
+			}
+		}]
+	}]
+}

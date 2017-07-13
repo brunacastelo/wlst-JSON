@@ -1,0 +1,57 @@
+"dataSources": [{
+		"jndiName": "sis.AggregationDataSource",
+		"targets": [{
+			"name": "sisprovisioningprd",
+			"type": "Cluster"
+		}],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@sisprd-p1:1549:sisprd",
+			"driverClassName": "oracle.jdbc.xa.client.OracleXADataSource",
+			"dbUserName": "sistem",
+			"dbPassword": "SENHA",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"inCapacity": 5,
+			"minCapacityInit": 1,
+			"maxCapacity": 60,
+			"incrementCapacity": 4,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 600,
+			"inactiveConnTimeout": 120,
+			"maxWaitingConn": 600000,
+			"connReserveTimeout": 180,
+			"inactiveConnectionTimeoutSeconds": 120
+		},
+		"transaction": {
+			"supportsGlobalTransactions": true,
+			"LastLoggingResource": true
+		}
+	},
+	{
+		"jndiName": "sis.DomainDataSource.Provisioning",
+		"targets": [{
+			"name": "sisprovisioningprd",
+			"type": "Cluster"
+		}],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@sisprd-p1:1549:sisprd",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sis",
+			"dbPassword": "SENHA",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"inCapacity": 5,
+			"minCapacityInit": 1,
+			"maxCapacity": 60,
+			"incrementCapacity": 5,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 600,
+			"inactiveConnTimeout": 120,
+			"maxWaitingConn": 600000,
+			"connReserveTimeout": 180,
+			"inactiveConnectionTimeoutSeconds": 120
+		},
+		"transaction": {
+			"supportsGlobalTransactions": false
+		}
+	}],

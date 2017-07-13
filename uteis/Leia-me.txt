@@ -1,0 +1,21 @@
+#########################################################
+Instruções para uso
+#########################################################
+
+1) Exportar o projeto em Jar, utilizando o MANIFEST presente no projeto.
+
+2) No ambiente no qual for ser rodado o projeto, criar uma pasta onde preferir e copiar para a mesma:
+	- Jar exportado no passo anterior.
+	- Copiar a pasta lib presente em "uteis/" e seu conteudo para a dentro da pasta criada anteriormente.
+
+3) Rodar o jar exportado a partir da seguinte linha de comando:
+	- /sismovel/bea/jrockit_150_11/bin/java -jar <<NOME_DO_ARQUIVO_EXPORTADO_AQUI>>
+
+
+#########################################################
+Observações
+#########################################################
+
+Esta ferramente cria, assim como a anterior, todas as propriedades que NÃO possuam "->" no arquivo config.txt
+do SIS Ativação, sendo que tais propriedades devem ser incluidas manualmente no ambiente devido a uma limitação
+do WLST.

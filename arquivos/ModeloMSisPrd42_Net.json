@@ -1,0 +1,459 @@
+{
+	"template": "TEMPLATE_PLATAFORMAS",
+	"weblogicPassword": "welcome1",
+	"url": "localhost:7001",
+	"user": "weblogic",
+	"weblogic": "welcome1",
+	"domain": {
+		"user": "weblogic",
+		"password": "welcome1",
+		"name": "sisnetworkdomain",
+		"domainType": "server",
+		"machines": [{ "name": "sisprd40"},{ "name": "sisprd41"},{ "name": "sisprd42"},{ "name": "sisprd43"}],
+		"clusters": [{ "name": "sisnetworkprd"}],
+		"managedServers": [
+			{ "name": "sisnetprd40a", "address": "localhost", "port": 47003, "machine": "sisprd40", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd40b", "address": "localhost", "port": 47005, "machine": "sisprd40", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd40c", "address": "localhost", "port": 47007, "machine": "sisprd40", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd41a", "address": "localhost", "port": 47003, "machine": "sisprd41", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd41b", "address": "localhost", "port": 47005, "machine": "sisprd41", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd41c", "address": "localhost", "port": 47007, "machine": "sisprd41", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd42a", "address": "localhost", "port": 47003, "machine": "sisprd42", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd42b", "address": "localhost", "port": 47005, "machine": "sisprd42", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd42c", "address": "localhost", "port": 47007, "machine": "sisprd42", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd42d", "address": "localhost", "port": 47009, "machine": "sisprd42", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd42e", "address": "localhost", "port": 47011, "machine": "sisprd42", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd42f", "address": "localhost", "port": 47013, "machine": "sisprd42", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd42g", "address": "localhost", "port": 47015, "machine": "sisprd42", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd42h", "address": "localhost", "port": 47017, "machine": "sisprd42", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd42i", "address": "localhost", "port": 47019, "machine": "sisprd42", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd42j", "address": "localhost", "port": 47021, "machine": "sisprd42", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd43b", "address": "localhost", "port": 47005, "machine": "sisprd43", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd43c", "address": "localhost", "port": 47007, "machine": "sisprd43", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd43d", "address": "localhost", "port": 47009, "machine": "sisprd43", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd43e", "address": "localhost", "port": 47011, "machine": "sisprd43", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd43f", "address": "localhost", "port": 47013, "machine": "sisprd43", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd43g", "address": "localhost", "port": 47015, "machine": "sisprd43", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd43h", "address": "localhost", "port": 47017, "machine": "sisprd43", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd43i", "address": "localhost", "port": 47019, "machine": "sisprd43", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd43j", "address": "localhost", "port": 47021, "machine": "sisprd43", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd43l", "address": "localhost", "port": 47023, "machine": "sisprd43", "cluster": "sisnetworkprd"},
+			{ "name": "sisnetprd43a_sup", "address": "localhost", "port": 47003, "machine": "sisprd43"}]
+	},
+	"dataSources": [
+	{
+		"jndiName": "sis.DomainDataSource",
+		"targets": [{ "name": "sisnetworkprd", "type": "Cluster" }],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@tualu:1521:sis11",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sis",
+			"dbPassword": "sis",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"inCapacity": 5,
+			"minCapacityInit": 1,
+			"maxCapacity": 60,
+			"incrementCapacity": 5,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 600,
+			"inactiveConnTimeout": 120,
+			"maxWaitingConn": 600000,
+			"connReserveTimeout": 180,
+			"inactiveConnectionTimeoutSeconds": 120
+		},
+		"transaction": {
+			"supportsGlobalTransactions": false
+		}
+	},
+	{
+		"jndiName": "sis.TempDataSource",
+		"targets": [{ "name": "sisnetworkprd", "type": "Cluster" }],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@tualu:1521:sis11",
+			"driverClassName": "oracle.jdbc.xa.client.OracleXADataSource",
+			"dbUserName": "sistem",
+			"dbPassword": "sistem",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"inCapacity": 5,
+			"minCapacityInit": 1,
+			"maxCapacity": 60,
+			"incrementCapacity": 4,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 600,
+			"inactiveConnTimeout": 120,
+			"maxWaitingConn": 600000,
+			"connReserveTimeout": 180,
+			"inactiveConnectionTimeoutSeconds": 120
+		},
+		"transaction": {
+			"supportsGlobalTransactions": true,
+			"XATransactionTimeout": 600
+		}
+	},
+	{
+		"jndiName": "sis.TempLLRDataSource",
+		"targets": [{ "name": "sisnetworkprd", "type": "Cluster" }],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@tualu:1521:sis11",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sistem",
+			"dbPassword": "sistem",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"inCapacity": 5,
+			"minCapacityInit": 1,
+			"maxCapacity": 15,
+			"incrementCapacity": 1,
+			"testConnReserve": false,
+			"shrinkFrequency": 900,
+			"connCreationRetryFrequency": 0,
+			"inactiveConnTimeout": 0,
+			"maxWaitingConn": 2147483647,
+			"connReserveTimeout": 10,
+			"inactiveConnectionTimeoutSeconds": 0
+		},
+		"transaction": {
+			"supportsGlobalTransactions": true,
+			"LastLoggingResource": true
+		}
+	}],
+	"jmsModule": [
+	{
+		"name": "sismodule",
+		"targets": [ {"name": "sisnetworkprd", "type": "Cluster"} ],
+		"connectionFactories": [{
+			"name": "sis.HistoryJMSConnectionFactory",
+			"jndiName": "sis.HistoryJMSConnectionFactory",
+			"sendTimeout": 10,
+			"maxMessagesPerSession": 1,
+			"reconnectPolicy": "producer",
+			"serverAffinityEnabled": true,
+			"xaConnectionFactoryEnabled": false
+		},
+		{
+			"name": "sis.JMSConnectionFactoryNonXA",
+			"jndiName": "sis.JMSConnectionFactoryNonXA",
+			"sendTimeout": 10000,
+			"maxMessagesPerSession": 1,
+			"reconnectPolicy": "all",
+			"serverAffinityEnabled": true,
+			"xaConnectionFactoryEnabled": false
+		},
+		{
+			"name": "sis.JMSConnectionFactory",
+			"jndiName": "sis.JMSConnectionFactory",
+			"sendTimeout": 10000,
+			"maxMessagesPerSession": 1,
+			"reconnectPolicy": "all",
+			"serverAffinityEnabled": true,
+			"xaConnectionFactoryEnabled": true
+		},
+		{
+			"name": "sis.NetworkJMSConnectionFactory",
+			"jndiName": "sis.NetworkJMSConnectionFactory",
+			"sendTimeout": 10,
+			"maxMessagesPerSession": 1,
+			"reconnectPolicy": "producer",
+			"serverAffinityEnabled": true,
+			"xaConnectionFactoryEnabled": false
+		}],
+		"priorityDestinationKey": {
+			"name": "PriorityDestinationKey",
+			"sortKey": "JMSPriority",
+			"keyType": "Long",
+			"direction": "Descending"
+		},
+		"defaultQueues": [
+		{
+			"queues": ["sis.NetworkConnectorOutQueue"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{
+				"name": "sisnetprd40a",
+				"type": "JMSServer"
+			}]
+		}],
+		"defaultDistributedQueues": [
+		{
+			"queues": ["sis.NetworkInQueue",
+				"sis.NetworkOutQueue",
+				"sis.NetworkReplyDefaultQueue", 
+				"sis.NetworkReplyDefaultAggregationQueue",
+				"sis.NetworkReplyAlternativeQueue", 
+				"sis.NetworkReplyAlternativeAggregationQueue", 
+				"sis.NetworkReceivedBatchReplyItemQueue",
+			    "sis.NetworkPendantBatchReplyItemQueue"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{
+				"name": "sisnetworkprd",
+				"type": "Cluster"
+			}]
+		}]
+	},
+	{
+		"name": "sisnetworkmodule",
+		"targets": [ {"name": "sisnetworkprd", "type": "Cluster"} ],
+		"priorityDestinationKey": {
+			"name": "PriorityDestinationKey",
+			"sortKey": "JMSPriority",
+			"keyType": "Long",
+			"direction": "Descending"
+		},
+		"defaultDistributedQueues": [
+		{
+			"queues": ["VMS04"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{ "name": "sisnetprd40a", "type": "JMSServer" },
+			            { "name": "sisnetprd40b", "type": "JMSServer" },
+			            { "name": "sisnetprd40c", "type": "JMSServer" }]
+		},
+		{
+			"queues": ["PMS09", "PMS02", "VMP05"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{
+				"name": "sisnetprd41a",
+				"type": "JMSServer"
+			}]
+		},
+		{
+			"queues": ["OTA01"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{
+				"name": "sisnetprd41b",
+				"type": "JMSServer"
+			}]
+		},
+		{
+			"queues": ["PMS10", "PMS08"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{
+				"name": "sisnetprd41c",
+				"type": "JMSServer"
+			}]
+		},
+		{
+			"queues": ["UDR02"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{"name": "sisnetprd42a","type": "JMSServer"},
+						{"name": "sisnetprd42b","type": "JMSServer"},
+						{"name": "sisnetprd42c","type": "JMSServer"},
+						{"name": "sisnetprd42d","type": "JMSServer"},
+						{"name": "sisnetprd42e","type": "JMSServer"},
+						{"name": "sisnetprd42f","type": "JMSServer"},
+						{"name": "sisnetprd42g","type": "JMSServer"},
+						{"name": "sisnetprd42h","type": "JMSServer"},
+						{"name": "sisnetprd42i","type": "JMSServer"},
+						{"name": "sisnetprd42j","type": "JMSServer"}]
+		},
+		{
+			"queues": ["SMSC07"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{
+				"name": "sisnetprd43b",
+				"type": "JMSServer"
+			}]
+		},
+		{
+			"queues": ["SMSC04"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{
+				"name": "sisnetprd43c",
+				"type": "JMSServer"
+			}]
+		},
+		{
+			"queues": ["SMSC08"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{
+				"name": "sisnetprd43d",
+				"type": "JMSServer"
+			}]
+		},
+		{
+			"queues": ["SMSC03"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{
+				"name": "sisnetprd43e",
+				"type": "JMSServer"
+			}]
+		},
+		{
+			"queues": ["SMSC06"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{
+				"name": "sisnetprd43f",
+				"type": "JMSServer"
+			}]
+		},
+		{
+			"queues": ["SMSC05"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{
+				"name": "sisnetprd43g",
+				"type": "JMSServer"
+			}]
+		},
+		{
+			"queues": ["PMS05", "UDR01", "VMP02"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{
+				"name": "sisnetprd43h",
+				"type": "JMSServer"
+			}]
+		},
+		{
+			"queues": ["PMS04", "VMP07", "VMP04"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{
+				"name": "sisnetprd43i",
+				"type": "JMSServer"
+			}]
+		},
+		{
+			"queues": ["PMS07", "RIM01", "VMS02"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{
+				"name": "sisnetprd43j",
+				"type": "JMSServer"
+			}]
+		},
+		{
+			"queues": ["PMSFIXA", "VMP06", "VMP08"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{
+				"name": "sisnetprd43l",
+				"type": "JMSServer"
+			}]
+		}
+		]
+	}],
+	"bridges":[{
+		"name": "EventHistoryBridge",
+		"qualityOfService": "Exactly-once",
+		"started": "true",
+		"targets": [{"name": "sisnetworkprd", "type": "Cluster"}],
+		"targetOri": "EventHistoryOri",
+		"targetDest": "EventHistoryDest",
+		"preserveMsgProperty": "true",
+		"bridgeTargets": [{
+			"name": "EventHistoryOri",
+			"userName": "weblogic",
+			"userPassword": "welcome1",
+			"destinationJNDIName": "sis.EventHistoryQueue",
+			"adapterJNDIName": "eis.jms.WLSConnectionFactoryJNDIXA",
+			"connectionFactoryJNDIName": "sis.JMSConnectionFactory",
+			"connectionURL": "t3://msisprd40:47003,msisprd40:47005,msisprd40:47007,msisprd41:47003,msisprd41:47005,msisprd41:47007,msisprd42:47003,msisprd42:47005,msisprd42:47007"
+		},		
+		{
+			"name": "EventHistoryDest",
+			"userName": "weblogic",
+			"userPassword": "welcome1",
+			"destinationJNDIName": "sis.EventHistoryQueue",
+			"adapterJNDIName": "eis.jms.WLSConnectionFactoryJNDIXA",
+			"connectionFactoryJNDIName": "sis.JMSConnectionFactory",
+			"connectionURL": "t3://msisprd38:37005,msisprd38:37007,msisprd38:37009,msisprd39:37003,msisprd39:37005,msisprd39:37007,msisprd40:37003,msisprd40:37003"
+		}]
+	}]
+}

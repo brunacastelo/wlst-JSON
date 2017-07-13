@@ -1,0 +1,266 @@
+{
+	"weblogicPassword": "welcome1",
+	"url": "localhost:9001",
+	"user": "weblogic",
+	"weblogic": "welcome1",
+	"domain": {
+		"user": "weblogic",
+		"password": "welcome1",
+		"name": "sisprovisioningdomain",
+		"domainType": "server",
+		"machines": [{ "name": "localhost"}],
+		"clusters": [{ "name": "sisprovisioningprd"}],
+		"managedServers": [{
+			"name": "sisprovprd39a",
+			"address": "localhost",
+			"port": 9003,
+			"machine": "localhost",
+			"cluster": "sisprovisioningprd"
+		},
+		{
+			"name": "sisprovprd39b",
+			"address": "localhost",
+			"port": 9005,
+			"machine": "localhost",
+			"cluster": "sisprovisioningprd"
+		}]
+	},
+	"dataSources": [{
+		"jndiName": "sis.AggregationDataSource",
+		"targets": [{
+			"name": "sisprovisioningprd",
+			"type": "Cluster"
+		}],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@tualu:1521:sis11",
+			"driverClassName": "oracle.jdbc.xa.client.OracleXADataSource",
+			"dbUserName": "sistem",
+			"dbPassword": "sistem",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"inCapacity": 5,
+			"minCapacityInit": 1,
+			"maxCapacity": 60,
+			"incrementCapacity": 4,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 600,
+			"inactiveConnTimeout": 120,
+			"maxWaitingConn": 600000,
+			"connReserveTimeout": 180,
+			"inactiveConnectionTimeoutSeconds": 120
+		},
+		"transaction": {
+			"supportsGlobalTransactions": true,
+			"LastLoggingResource": true
+		}
+	},
+	{
+		"jndiName": "sis.DomainDataSource.Provisioning",
+		"targets": [{
+			"name": "sisprovisioningprd",
+			"type": "Cluster"
+		}],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@tualu:1521:sis11",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sis",
+			"dbPassword": "sis",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"inCapacity": 5,
+			"minCapacityInit": 1,
+			"maxCapacity": 60,
+			"incrementCapacity": 5,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 600,
+			"inactiveConnTimeout": 120,
+			"maxWaitingConn": 600000,
+			"connReserveTimeout": 180,
+			"inactiveConnectionTimeoutSeconds": 120
+		},
+		"transaction": {
+			"supportsGlobalTransactions": false
+		}
+	}],
+	"jmsModule": [{
+		"name": "sisprovisioningmodule",
+		"targets": [
+		{
+			"name": "sisprovisioningprd",
+			"type": "Cluster"
+		}],
+		"priorityDestinationKey": {
+			"name": "PriorityDestinationKey",
+			"sortKey": "JMSPriority",
+			"keyType": "Long",
+			"direction": "Descending"
+		},
+		"defaultDistributedQueues": [
+		{
+			"queues": ["sis.Mno", "sis.Sisgen"],
+			"template": "TEMPLATE_SISTEMAS_EXTERNOS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{
+				"name": "sisprovisioningprd",
+				"type": "Cluster"
+			}]
+		}
+		]
+	},
+	{
+		"name": "sismodule",
+		"targets": [
+		{
+			"name": "sisprovisioningprd",
+			"type": "Cluster"
+		}],
+		"connectionFactories": [{
+			"name": "sis.JMSConnectionFactoryNonXA",
+			"jndiName": "sis.JMSConnectionFactoryNonXA",
+			"sendTimeout": 10000,
+			"maxMessagesPerSession": 1,
+			"reconnectPolicy": "all",
+			"serverAffinityEnabled": true,
+			"xaConnectionFactoryEnabled": false
+		},
+		{
+			"name": "sis.JMSConnectionFactory",
+			"jndiName": "sis.JMSConnectionFactory",
+			"sendTimeout": 10000,
+			"maxMessagesPerSession": 1,
+			"reconnectPolicy": "all",
+			"serverAffinityEnabled": true,
+			"xaConnectionFactoryEnabled": true
+		},
+		{
+			"name": "sis.NetworkJMSConnectionFactory",
+			"jndiName": "sis.NetworkJMSConnectionFactory",
+			"sendTimeout": 10,
+			"maxMessagesPerSession": 1,
+			"reconnectPolicy": "producer",
+			"serverAffinityEnabled": true,
+			"xaConnectionFactoryEnabled": false
+		}],
+		"priorityDestinationKey": {
+			"name": "PriorityDestinationKey",
+			"sortKey": "JMSPriority",
+			"keyType": "Long",
+			"direction": "Descending"
+		},
+		"defaultDistributedQueues": [
+		{
+			"queues":  ["sis.NetworkReplyAlternativeAggregationQueue",
+						"sis.NetworkReplyAlternativeQueue",
+						"sis.NetworkReplyDefaultAggregationQueue",
+						"sis.NetworkReplyDefaultQueue",
+						"sis.ProvisionerAggregationQueue",
+						"sis.ProvisionerAssyncTaskQueue",
+						"sis.ProvisionerInAlternativeQueue",
+						"sis.ProvisionerInDefaultQueue",
+						"sis.ProvisionerInQueue",
+						"sis.ProvisionerOutQueue",
+						"sis.WorkflowDefinitionQueue",
+						"sis.EventHistoryQueue",
+						"sis.NetworkOutQueue",
+						"sis.NetworkInQueue"],
+			"template": "TEMPLATE_PLATAFORMAS",
+			"priorityDestinationKey": {"name": "PriorityDestinationKey"},
+			"deliveryFailure": {
+				"redeliveryDelayOverride": 30000,
+				"redeliveryLimit": 0,
+				"expirationPolicy": "Redirect"
+			},
+			"targets": [{
+				"name": "sisprovisioningprd",
+				"type": "Cluster"
+			}]
+		}
+		]
+	}],
+	"bridges":[{
+		"name": "EventHistoryBridge",
+		"qualityOfService": "Exactly-once",
+		"started": "true",
+		"targets": [{"name": "sisprovisioningprd", "type": "Cluster"}],
+		"targetOri": "EventHistoryOri",
+		"targetDest": "EventHistoryDest",
+		"preserveMsgProperty": "true",
+		"bridgeTargets": [{
+			"name": "EventHistoryOri",
+			"userName": "weblogic",
+			"userPassword": "welcome1",
+			"destinationJNDIName": "sis.EventHistoryQueue",
+			"adapterJNDIName": "eis.jms.WLSConnectionFactoryJNDIXA",
+			"connectionFactoryJNDIName": "sis.NetworkJMSConnectionFactory",
+			"connectionURL": "t3://localhost:9003,localhost:9005"
+		},		
+		{
+			"name": "EventHistoryDest",
+			"userName": "weblogic",
+			"userPassword": "welcome1",
+			"destinationJNDIName": "sis.EventHistoryQueue",
+			"adapterJNDIName": "eis.jms.WLSConnectionFactoryJNDIXA",
+			"connectionFactoryJNDIName": "sis.JMSConnectionFactory",
+			"connectionURL": "t3://localhost:8003,localhost:8005"
+		}]
+	},
+	{
+		"name": "NetworkInBridge",
+		"qualityOfService": "Exactly-once",
+		"started": "true",
+		"targets": [{"name": "sisprovisioningprd", "type": "Cluster"}],
+		"targetOri": "NetworkInOri",
+		"targetDest": "NetworkInDest",
+		"preserveMsgProperty": "true",
+		"bridgeTargets": [{
+			"name": "NetworkInOri",
+			"userName": "weblogic",
+			"userPassword": "welcome1",
+			"destinationJNDIName": "sis.NetworkInQueue",
+			"adapterJNDIName": "eis.jms.WLSConnectionFactoryJNDIXA",
+			"connectionFactoryJNDIName": "sis.JMSConnectionFactory",
+			"connectionURL": "t3://localhost:9003,localhost:9005"
+		},		
+		{
+			"name": "NetworkInDest",
+			"userName": "weblogic",
+			"userPassword": "welcome1",
+			"destinationJNDIName": "sis.NetworkInQueue",
+			"adapterJNDIName": "eis.jms.WLSConnectionFactoryJNDIXA",
+			"connectionFactoryJNDIName": "sis.JMSConnectionFactory",
+			"connectionURL": "t3://localhost:8007,localhost:8009"
+		}]
+	},
+	{
+		"name": "NetworkOutBridge",
+		"qualityOfService": "Exactly-once",
+		"started": "true",
+		"targets": [{"name": "sisprovisioningprd", "type": "Cluster"}],
+		"targetOri": "NetworkOutOri",
+		"targetDest": "NetworkOutDest",
+		"preserveMsgProperty": "true",
+		"bridgeTargets": [{
+			"name": "NetworkOutOri",
+			"userName": "weblogic",
+			"userPassword": "welcome1",
+			"destinationJNDIName": "sis.NetworkOutQueue",
+			"adapterJNDIName": "eis.jms.WLSConnectionFactoryJNDIXA",
+			"connectionFactoryJNDIName": "sis.JMSConnectionFactory",
+			"connectionURL": "t3://localhost:8007,localhost:8009"
+		},		
+		{
+			"name": "NetworkOutDest",
+			"userName": "weblogic",
+			"userPassword": "welcome1",
+			"destinationJNDIName": "sis.NetworkOutQueue",
+			"adapterJNDIName": "eis.jms.WLSConnectionFactoryJNDIXA",
+			"connectionFactoryJNDIName": "sis.JMSConnectionFactory",
+			"connectionURL": "t3://localhost:9003,localhost:9005"
+		}]
+	}]		
+}

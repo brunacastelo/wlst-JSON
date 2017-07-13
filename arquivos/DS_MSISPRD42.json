@@ -1,0 +1,78 @@
+"dataSources": [
+	{
+		"jndiName": "sis.DomainDataSource",
+		"targets": [{ "name": "sisnetworkprd", "type": "Cluster" }],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@sisprd-p1:1549:sisprd",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sis",
+			"dbPassword": "SENHA",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"inCapacity": 5,
+			"minCapacityInit": 1,
+			"maxCapacity": 60,
+			"incrementCapacity": 5,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 600,
+			"inactiveConnTimeout": 120,
+			"maxWaitingConn": 600000,
+			"connReserveTimeout": 180,
+			"inactiveConnectionTimeoutSeconds": 120
+		},
+		"transaction": {
+			"supportsGlobalTransactions": false
+		}
+	},
+	{
+		"jndiName": "sis.TempDataSource",
+		"targets": [{ "name": "sisnetworkprd", "type": "Cluster" }],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@sisprd-p1:1549:sisprd",
+			"driverClassName": "oracle.jdbc.xa.client.OracleXADataSource",
+			"dbUserName": "sistem",
+			"dbPassword": "SENHA",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"inCapacity": 5,
+			"minCapacityInit": 1,
+			"maxCapacity": 60,
+			"incrementCapacity": 4,
+			"testConnReserve": true,
+			"shrinkFrequency": 300,
+			"connCreationRetryFrequency": 600,
+			"inactiveConnTimeout": 120,
+			"maxWaitingConn": 600000,
+			"connReserveTimeout": 180,
+			"inactiveConnectionTimeoutSeconds": 120
+		},
+		"transaction": {
+			"supportsGlobalTransactions": true,
+			"XATransactionTimeout": 600
+		}
+	},
+	{
+		"jndiName": "sis.TempLLRDataSource",
+		"targets": [{ "name": "sisnetworkprd", "type": "Cluster" }],
+		"connectionPool": {
+			"url": "jdbc:oracle:thin:@sisprd-p1:1549:sisprd",
+			"driverClassName": "oracle.jdbc.OracleDriver",
+			"dbUserName": "sistem",
+			"dbPassword": "SENHA",
+			"testTableName": "SQL BEGIN NULL; END;",
+			"inCapacity": 5,
+			"minCapacityInit": 1,
+			"maxCapacity": 15,
+			"incrementCapacity": 1,
+			"testConnReserve": false,
+			"shrinkFrequency": 900,
+			"connCreationRetryFrequency": 0,
+			"inactiveConnTimeout": 0,
+			"maxWaitingConn": 2147483647,
+			"connReserveTimeout": 10,
+			"inactiveConnectionTimeoutSeconds": 0
+		},
+		"transaction": {
+			"supportsGlobalTransactions": true,
+			"LastLoggingResource": true
+		}
+	}],
